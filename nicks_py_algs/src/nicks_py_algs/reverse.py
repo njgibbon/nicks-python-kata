@@ -16,12 +16,6 @@ def reverse_1(s: str) -> str:
     return reversed_output
 
 def reverse_2(s: str) -> str:
-    """Reverse a string with list 'reverse' and 'join'"""
-    s_list = list(s)
-    s_list.reverse()
-    return ''.join(s_list)
-
-def reverse_3(s: str) -> str:
     """Reverse a string by swapping elements around in a list and 'join'."""
     s_length = len(s)
     s_list = list(s)
@@ -33,6 +27,12 @@ def reverse_3(s: str) -> str:
         j=j-1
         if (j<i):
             break
+    return ''.join(s_list)
+
+def reverse_3(s: str) -> str:
+    """Reverse a string with list 'reverse' and 'join'"""
+    s_list = list(s)
+    s_list.reverse()
     return ''.join(s_list)
 
 def reverse_4(s: str) -> str:

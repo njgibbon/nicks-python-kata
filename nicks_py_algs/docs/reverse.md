@@ -1,6 +1,8 @@
 # reverse
 Various algorithms to reverse a string in python. 
 
+# TODO: all of this bit -----------------
+
 ## resource
 ### code
 ### timeit

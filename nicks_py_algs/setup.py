@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='nicks_py_algs',
-    url='http://github.com/njgibbon',
+    url='https://github.com/njgibbon/nicks-python-kata/tree/master/nicks_py_algs',
     version='0.0.0',
     license='MIT',
     author='Nick Gibbon',
