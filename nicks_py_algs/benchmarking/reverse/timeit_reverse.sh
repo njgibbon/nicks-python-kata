@@ -1,4 +1,4 @@
-#input string length 28 ((alphabet)26*8)
+#input string length 208 ((alphabet)26*8)
 #abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
 
 #0: traverse back and append
