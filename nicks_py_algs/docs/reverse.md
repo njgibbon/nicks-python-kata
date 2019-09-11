@@ -3,8 +3,13 @@ Various algorithms to reverse a string in python.
 
 Python doesn't come with any in-built method to reverse a string. So this might actually be handy to know. 
 
-## Design & Analysis
-Firstly, we just need to consider the steps to implement the algorithm efficiently in theory. 
+## Resources
+### Code
+### Tests
+### Benchmarks
+
+# Design & Analysis
+First we just need to consider the steps to implement the algorithm efficiently in theory. 
 A good place to start is to imagine how we could do this manually and methodically with some small input.  
  
 A) Read the string backwards and write each character to a new string until we're done. 
@@ -12,7 +17,7 @@ O(n) where n is the length of the string because it takes n steps and scales lin
 
 TODO: Add image
 
-or B) Swap the start (s) and end (e) characters around. Then s+1 and e-1 and so on until your counters meet in the middle and all characters have been swapped.
+B) Swap the start (s) and end (e) characters around. Then s+1 and e-1 and so on until your counters meet in the middle and all characters have been swapped.
 This is also O(n) because you need to make the same number of moves albeit in a different way. 
 There is some additional overhead because *swapping* requires a a temporary variable and you need to check if the counters have met in the middle yet with each cycle. But it's of the same order. 
 Also, as the swap is done inline the algorithm takes less space. 
