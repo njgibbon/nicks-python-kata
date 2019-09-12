@@ -76,7 +76,7 @@ It is interesting that my inline swap function was 6x~ slower than the built-in 
 
 https://github.com/python/cpython/blob/master/Objects/listobject.c  
 
-Finally, it is clear that slicing is by far the fastest, but why exactly? It could be, again, that the whole operation is in C and there is no additional 'join' step. The unerlying implementation doesn't seem to be doing anything special - just looping to copy into another list. 
+Finally, it is clear that slicing is by far the fastest, but why exactly? It could be, again, that the whole operation is in C and there is no additional 'join' step. The underlying implementation doesn't seem to be doing anything special - just looping to copy into another list. 
 
 ![cpython_slice](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/cpython_slice.png)  
 
@@ -92,10 +92,10 @@ It could be interesting to manufacture more tests to isolate the reasons. Checki
 
 ## Resources
 
-https://www.python.org/dev/peps/pep-0322/
+https://www.python.org/dev/peps/pep-0322/  
 
-https://waymoot.org/home/python_string/
+https://waymoot.org/home/python_string/  
 
-https://www.journaldev.com/23647/python-reverse-string
+https://www.journaldev.com/23647/python-reverse-string  
 
-https://www.quora.com/How-is-slicing-implemented-in-python
+https://www.quora.com/How-is-slicing-implemented-in-python  
