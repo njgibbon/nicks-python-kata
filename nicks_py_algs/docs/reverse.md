@@ -1,4 +1,4 @@
-# reverse
+# Reverse
 Various algorithms to reverse a string in python. 
 
 Python doesn't come with any in-built method to reverse a string. So this might actually be handy to know. 
@@ -8,7 +8,7 @@ Python doesn't come with any in-built method to reverse a string. So this might 
 https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/src/nicks_py_algs/reverse.py
 ### Tests
 https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/tests/test_reverse.py
-### Benchmarks
+### Benchmarking
 https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/benchmarking/timeit_reverse.sh
 
 # Design
@@ -23,7 +23,7 @@ This is also O(n) because you need to make the same number of moves albeit in a 
 
 ![reverse swap](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/hello-inline-reverse.png)
 
-## Implementation
+# Implementation
 
 **Traverse backwards**
 
@@ -50,7 +50,7 @@ By passing a string to 'reversed' an iterator is returned which is set to go thr
 
 To my knowledge slice will take a sub-list of a list and copy it to a new space. Expected to have similar good performance.  
 
-## Benchmarking
+# Benchmarking
 For each function I ran a few tests like so:
 ```
 python3 -m timeit --number 1000 --unit usec 'import src.nicks_py_algs.reverse' 'src.nicks_py_algs.reverse.reverse_0("abcdefghijklmnopqrstuvwxyz")'
@@ -84,13 +84,13 @@ It could be interesting to manufacture more tests to isolate the reasons. Checki
 
 
 ## Key takeaways
-• Slicing is the most efficient way to reverse a string in python.   
-• 'Reverse' to swap inline and 'reversed' for a copy perform well and are clearer. 
-• String concatenation as implemented in the slower algorithms should be avoided.    
-• Benchmarking is useful to see things we can't concretely detect otherwise. 
-• Code runs fast - the slowest implementation was still only around 1 1,000th of a second. 
+• Slicing is the most efficient way to reverse a string in python.  
+• 'Reverse' to swap inline and 'reversed' for a copy perform well and are clearer.  
+• String concatenation as implemented in the slower algorithms should be avoided.      
+• Benchmarking is useful to see things we can't concretely detect otherwise.  
+• Code runs fast - the slowest implementation was still only around 1 1,000th of a second.
 
-## Resources
+## Other resources
 
 https://www.python.org/dev/peps/pep-0322/  
 
