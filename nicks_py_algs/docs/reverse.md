@@ -58,26 +58,32 @@ python3 -m timeit --number 1000 --unit usec 'import src.nicks_py_algs.reverse' '
 But I set the input string to a length of 10,000.  
 The test returns the average value of the best 5 runs. This gives the algorithm the best chance to perform as well as it can on your machine. This type of testing is useful to point out significant performance differences. The time tracked is in micro-seconds 1/1,000,000th of a second.  
 
-![reverse benchmark](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/reverse_benchmark.png)
+![reverse benchmark table](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/reverse_benchmark_table.png)
 
-TODO: Create and screenshot table of results.  
+![reverse_0](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/reverse_0_bench.png)
+![reverse_1](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/reverse_1_bench.png)
+![reverse_2](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/reverse_2_bench.png)
+![reverse_3](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/reverse_3_bench.png)
+![reverse_4](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/reverse_4_bench.png)
+![reverse_5](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/reverse_5_bench.png)
 
-TODO: talk about results.
+### Thoughts
+As expected the first functions performed worst. It is interesting how much worse the 'forward traverse' did because they are so similar. Perhaps `reversed_output = reversed_output + s[i]` is quicker than `reversed_output = c + reversed_output` for whatever reason.  
 
-Thoughts
-As expected the first functions performed worst. It is interesting how much worse the 'forward traverse' did because they are so similar. Perhaps `reversed_output = reversed_output + s[i]` is quicker than `reversed_output = c + reversed_output` for whatever reason. 
+It is interesting that my inline swap function was 6x~ slower than the built-in 'reversed' function because they are expected to be doing the same thing. Both should deal with the overhead of the break condition, decrementing the counter and actually swapping with each cycle.  
 
-My swap didnt do that great. Perhaps because of overheard of break, swapping and decrementing counter. Perhaps because I am copying things around whilst reverse implementation in c looks like it's just moving pointers which is lighterweight AND the fact it's in C. 
+
 
 And ofcourse, why is slice so much better. the cpython shows. 
 
-It would be interesting to 
+It would be interesting to check other interpreters? Look further into results?
 
 What did we learn?
 
 Benchmarking is useful to see things we can't infer or pick up mistakes. 
 Slice is superior, perhaps because all in c?
 Some interesting questions have arisen
+Code runs fast - 1000 milliomth was slowed.
 
 
 
