@@ -56,7 +56,7 @@ For each function I ran a few tests like so:
 python3 -m timeit --number 1000 --unit usec 'import src.nicks_py_algs.reverse' 'src.nicks_py_algs.reverse.reverse_0("abcdefghijklmnopqrstuvwxyz")'
 ```
 But I set the input string to a length of 10,000.  
-The test returns the average value of the best 5 runs. This gives the algorithm the best chance to perform as well as it can on your machine. This type of testing is useful to point out significant performance differences. The time tracked is in micro-seconds 1/1,000,000th of a second.  
+The test returns the average value of the best 5 runs. This gives the algorithm the best chance to perform as well as it can on your machine. This type of testing is useful to point out significant performance differences. The time tracked is in microseconds (1/1,000,000th of a second).  
 
 ![reverse benchmark table](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/reverse_benchmark_table.png)
 
@@ -68,28 +68,34 @@ The test returns the average value of the best 5 runs. This gives the algorithm 
 ![reverse_5](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/reverse_5_bench.png)
 
 ### Thoughts
-As expected the first functions performed worst. It is interesting how much worse the 'forward traverse' did because they are so similar. Perhaps `reversed_output = reversed_output + s[i]` is quicker than `reversed_output = c + reversed_output` for whatever reason.  
+As expected the first functions performed worst. It is interesting how much worse the 'forward traverse' did because they are so similar. Perhaps `reversed_output = reversed_output + s[i]` ends up being quicker than `reversed_output = c + reversed_output` for some reason.  
 
-It is interesting that my inline swap function was 6x~ slower than the built-in 'reversed' function because they are expected to be doing the same thing. Both should deal with the overhead of the break condition, decrementing the counter and actually swapping with each cycle.  
+It is interesting that my inline swap function was 6x~ slower than the built-in 'reversed' function because they are expected to be doing the same thing. Both should deal the same additional overhead described in the design section. When checking the underlying implementation the function is very similar (just in 'while' form). I guess 2 key differences is that this loop seems to be passing pointers around and not doing actual copies which my implementation is probably doing. And secondly, the whole operation is in C which means it will be inherently faster. 
 
+![cpython_reverse](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/cpython_reverse.png)
 
+https://github.com/python/cpython/blob/master/Objects/listobject.c  
 
-And ofcourse, why is slice so much better. the cpython shows. 
+Finally, it is clear that slicing is by far the fastest, but why exactly? It could be, again, that the whole operation is in C and there is no additional 'join' step. The unerlying implementation doesn't seem to be doing anything special - just looping to copy into another list. 
 
-It would be interesting to check other interpreters? Look further into results?
+![cpython_slice](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/cpython_slice.png)  
 
-What did we learn?
-
-Benchmarking is useful to see things we can't infer or pick up mistakes. 
-Slice is superior, perhaps because all in c?
-Some interesting questions have arisen
-Code runs fast - 1000 milliomth was slowed.
+It could be interesting to manufacture more tests to isolate the reasons. Checking with different python compilers / interpreters would be useful. 
 
 
+## Key takeaways
+• Slicing is the most efficient way to reverse a string in python.   
+• 'Reverse' to swap inline and 'reversed' for a copy perform well and are clearer. 
+• String concatenation as implemented in the slower algorithms should be avoided.    
+• Benchmarking is useful to see things we can't concretely detect otherwise. 
+• Code runs fast - the slowest implementation was still only around 1 1,000th of a second. 
 
+## Resources
 
 https://www.python.org/dev/peps/pep-0322/
 
 https://waymoot.org/home/python_string/
 
 https://www.journaldev.com/23647/python-reverse-string
+
+https://www.quora.com/How-is-slicing-implemented-in-python
