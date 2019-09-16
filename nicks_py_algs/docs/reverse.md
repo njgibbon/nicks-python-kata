@@ -55,8 +55,10 @@ For each function I ran a few tests like so:
 ```
 python3 -m timeit --number 1000 --unit usec 'import src.nicks_py_algs.reverse' 'src.nicks_py_algs.reverse.reverse_0("abcdefghijklmnopqrstuvwxyz")'
 ```
-But I set the input string to a length of 10,000.  
+But I set the input string to a length of 10,000 characters.  
 The test returns the average value of the best 5 runs. This gives the algorithm the best chance to perform as well as it can on your machine. This type of testing is useful to point out significant performance differences. The time tracked is in microseconds (1/1,000,000th of a second).  
+
+## Results
 
 ![reverse benchmark table](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/reverse_benchmark_table.png)
 
@@ -70,7 +72,7 @@ The test returns the average value of the best 5 runs. This gives the algorithm 
 ### Thoughts
 As expected the first functions performed worst. It is interesting how much worse the 'forward traverse' did because they are so similar. Perhaps `reversed_output = reversed_output + s[i]` ends up being quicker than `reversed_output = c + reversed_output` for some reason.  
 
-It is interesting that my inline swap function was 6x~ slower than the built-in 'reversed' function because they are expected to be doing the same thing. Both should deal the same additional overhead described in the design section. When checking the underlying implementation the function is very similar (just in 'while' form). I guess 2 key differences is that this loop seems to be passing pointers around and not doing actual copies which my implementation is probably doing. And secondly, the whole operation is in C which means it will be inherently faster. 
+It is interesting that my inline swap function was 6x~ slower than the built-in 'reversed' function because they are expected to be doing the same thing. Both should face the same additional overhead described in the design section. When checking the underlying implementation the function is very similar (just in 'while' form). I guess the 2 key differences are that the loop seems to be passing pointers around and not doing actual copies which my implementation is probably doing. And secondly, the whole operation is in C which means it will be inherently faster. 
 
 ![cpython_reverse](https://github.com/njgibbon/nicks-python-kata/blob/master/nicks_py_algs/images/cpython_reverse.png)
 
